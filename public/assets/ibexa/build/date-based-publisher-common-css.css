@@ -1,0 +1,81 @@
+.ibexa-scheduler-publish-later .ibexa-extra-actions__content {
+  max-height: inherit;
+}
+.ibexa-scheduler-publish-later .ibexa-date-time-picker {
+  margin-bottom: 1rem;
+}
+
+.ibexa-context-menu .ibexa-extra-actions-container .ibexa-scheduler-publish-later__actions {
+  display: flex;
+}
+.ibexa-context-menu .ibexa-extra-actions-container .ibexa-scheduler-publish-later__actions .ibexa-btn--confirm-schedule {
+  font-size: 0.875rem;
+  width: 12.5rem;
+  justify-content: center;
+}
+
+.ibexa-dropdown .ibexa-scheduler-publish-later {
+  border-color: #ae1164;
+  background-color: #ae1164;
+}
+.ibexa-dropdown .ibexa-scheduler-publish-later:after {
+  background-color: #ae1164;
+}
+.ibexa-dropdown .ibexa-scheduler-publish-later .ibexa-extra-actions__content {
+  padding: 1rem;
+}
+
+.ibexa-pb-schedule-hide--hidden-calendar .flatpickr-calendar {
+  display: none;
+}
+
+.dbp-notification .ibexa-notifications-modal__type .type__icon {
+  background: #db0032;
+  fill: #f9f9fa;
+}
+.dbp-notification.ibexa-notifications-modal__item--read .type__icon {
+  background-color: #a0a4a8;
+}
+
+.c-event-marker[data-event-type=future_publication] .ibexa-icon {
+  fill: #a0a4a8;
+}
+.c-event-marker[data-event-type=future_publication]:before, .c-event-marker[data-event-type=future_publication]:after {
+  background-color: #a0a4a8;
+}
+
+.ibexa-modal--scheduling .modal-header {
+  border-bottom: none;
+  padding: 0.9375rem 0.9375rem 0 0.9375rem;
+  position: relative;
+  min-height: 2.5rem;
+}
+.ibexa-modal--scheduling .modal-body {
+  padding: 0.9375rem 1.875rem;
+}
+.ibexa-modal--scheduling .modal-footer {
+  border-top: none;
+  justify-content: center;
+}
+.ibexa-modal--scheduling .ibexa-scheduling-modal__input-label {
+  display: block;
+  font-weight: bold;
+  margin-top: 1.25rem;
+}
+.ibexa-modal--scheduling .ibexa-scheduling-modal__btn {
+  display: flex;
+}
+.ibexa-modal--scheduling .ibexa-scheduling-modal__btn-spinner {
+  margin-right: 0.5rem;
+  display: none;
+}
+.ibexa-modal--scheduling .ibexa-scheduling-modal__btn-spinner--visible {
+  display: initial;
+}
+
+.ibexa-modal--content-reveal-confirmation .modal-header {
+  border-bottom: none;
+}
+.ibexa-modal--content-reveal-confirmation .modal-footer {
+  border-top: none;
+}

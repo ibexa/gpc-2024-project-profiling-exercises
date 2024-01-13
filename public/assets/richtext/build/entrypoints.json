@@ -1,0 +1,14 @@
+{
+  "entrypoints": {
+    "ibexa-richtext-onlineeditor-js": {
+      "js": [
+        "/assets/richtext/build/ibexa-richtext-onlineeditor-js.js"
+      ]
+    },
+    "ibexa-richtext-onlineeditor-css": {
+      "css": [
+        "/assets/richtext/build/ibexa-richtext-onlineeditor-css.css"
+      ]
+    }
+  }
+}

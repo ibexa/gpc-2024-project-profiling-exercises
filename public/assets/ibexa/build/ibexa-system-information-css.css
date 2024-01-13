@@ -1,0 +1,14 @@
+.ibexa-system-info-helper-text {
+  font-size: 0.75rem;
+  color: #71767c;
+  width: 75%;
+  border-top: 0.0625rem solid #cfd1d3;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+.ibexa-system-info-helper-text__link {
+  color: #71767c;
+}
+.ibexa-system-info-helper-text .ibexa-icon {
+  fill: #71767c;
+}
