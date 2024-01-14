@@ -1,0 +1,23 @@
+ProductCategoryTagItemType:
+    type: object
+    inherits:
+        - BaseItemType
+    config:
+        interfaces:
+            - ItemType
+        fields:
+            name:
+                type: TextLineFieldDefinition
+                resolve: '@=value.getFieldDefinition("name")'
+            identifier:
+                type: TextLineFieldDefinition
+                resolve: '@=value.getFieldDefinition("identifier")'
+            parent:
+                type: MatrixFieldDefinition
+                resolve: '@=value.getFieldDefinition("parent")'
+            description:
+                type: MatrixFieldDefinition
+                resolve: '@=value.getFieldDefinition("description")'
+            image:
+                type: MatrixFieldDefinition
+                resolve: '@=value.getFieldDefinition("image")'

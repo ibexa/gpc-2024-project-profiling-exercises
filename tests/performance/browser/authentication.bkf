@@ -1,0 +1,13 @@
+group browserLogin
+    name "Setup: Browser Login"
+    blackfire false
+    visit url('/login')
+        name "Visit login site"
+        expect status_code() == 200
+    submit button("Login")
+        name "Login as user"
+        param _username username
+        param _password password
+    follow 
+        name "Follow redirect"
+        expect css(".navbar:contains('Mallorca BB')").count() > 0

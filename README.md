@@ -1,38 +1,43 @@
-# Ibexa Flex website skeleton
+This project aims to provide you with a sandbox for exercising your profiling skills in Ibexa DXP-based projects.
+There are multiple performance issues with the project's code - use your profiling skills to find them all (and then: fix them ;) )
+Contributors: Mateusz Bieniek and Marek Nocuń
 
-This is a Symfony Flex website skeleton allowing installation of all editions of
-[Ibexa DXP](https://www.ibexa.co/products) and Ibexa Open Source.
+Feel free to drop us a message with feedback: mateusz.bieniek@ibexa.co and marek.nocun@ibexa.co
+
+## Requirements
+- Standard Ibexa DXP v4.5 requirements: https://doc.ibexa.co/en/4.5/getting_started/requirements/
+- PHP v8.1+, MariaDB or MySQL
+- Valid Ibexa DXP Enterprise license
 
 ## Installation
+1. Clone the repository
+2. Create a database and restore the database dump from `doc/sql/igpc_profiling.sql` with base data like directories, roles, etc
+3. Set up `.env.local` with DB connection details
+4. `composer install`
+5. `composer run post-install-cmd`
+6. `php -S 127.0.0.1:8000 -t public`
+7. Enjoy!
 
-For installation instructions of Ibexa DXP see either
-[the official documentation](https://doc.ibexa.co/) or packages for specific editions:
-* [Ibexa Content](https://github.com/ibexa/content)
-* [Ibexa Experience](https://github.com/ibexa/experience)
-* [Ibexa Commerce](https://github.com/ibexa/commerce)
+## Testing
 
-Ibexa DXP is licensed under Ibexa Business Use License Agreement (Ibexa BUL) and requires
-a subscription. Learn more about [Ibexa DXP](https://www.ibexa.co/products).
+### Blackfire tests
 
-For installation instructions of Ibexa Open Source see [ibexa/oss](https://github.com/ibexa/oss)
-package.
+The tests are located in the `.blackfire.yaml` file.
+
+### Blackfire scenarios
+
+The scenarios are located in `./tests/performance/` directory and are loaded from the `.blackfire.yaml` file.
+
+### Running the tests:
+
+```sh
+docker run --rm -it 
+    -e BLACKFIRE_CLIENT_ID="X" \
+    -e BLACKFIRE_CLIENT_TOKEN="Y" \
+    -v "`pwd`:/app" -v "`pwd`/var/log:/tmp/blackfire-player-trace" \
+    blackfire/player run .blackfire.yaml -vv --endpoint=https://example.com --tracer -vv \
+    --blackfire-env=Z
+```
 
 ## COPYRIGHT
-Copyright (C) 1999-2021 Ibexa AS (formerly eZ Systems AS). All rights reserved.
-
-## LICENSE
-This source code is available separately under the following licenses:
-
-A - Ibexa Business Use License Agreement (Ibexa BUL),
-version 2.3 or later versions (as license terms may be updated from time to time)
-Ibexa BUL is granted by having a valid Ibexa DXP (formerly eZ Platform Enterprise) subscription,
-as described at: https://www.ibexa.co/product
-For the full Ibexa BUL license text, please see:
-https://www.ibexa.co/software-information/licenses-and-agreements (latest version applies)
-
-AND
-
-B - GNU General Public License, version 2
-Grants an copyleft open source license with ABSOLUTELY NO WARRANTY. For the full GPL license text, please see:
-- LICENSE file placed in the root of this source code, or
-- https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+Copyright (C) 1999-2024 Ibexa AS (formerly eZ Systems AS). All rights reserved.

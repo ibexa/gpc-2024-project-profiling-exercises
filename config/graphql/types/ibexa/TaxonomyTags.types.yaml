@@ -1,0 +1,19 @@
+TaxonomyTags:
+    type: object
+    inherits:
+        - BaseTaxonomy
+    config:
+        fields:
+            single:
+                type: TaxonomyEntry
+                description: 'Fetch single Taxonomy Entry using ID, identifier or contentId'
+                resolve: '@=query("TaxonomyEntry", args, "tags")'
+                args:
+                    id: { type: Int }
+                    identifier: { type: String }
+                    contentId: { type: Int }
+            all:
+                type: TaxonomyEntryConnection
+                description: 'Fetch multiple Taxonomy Entries'
+                resolve: '@=query("TaxonomyEntryAll", args, "tags")'
+                argsBuilder: 'Relay::Connection'

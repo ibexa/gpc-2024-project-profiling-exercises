@@ -1,0 +1,9 @@
+TagItemConnection:
+    type: relay-connection
+    config:
+        nodeType: TagItem
+        connectionFields:
+            sliceSize:
+                type: Int!
+            orderBy:
+                type: String

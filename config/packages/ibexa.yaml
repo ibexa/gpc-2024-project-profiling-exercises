@@ -102,6 +102,30 @@ ibexa:
             page_layout: "@ibexadesign/pagelayout.html.twig"
             user_content_type_identifier: ['user']
         site:
+            field_templates:
+                - { template: '@ibexadesign/field/author.html.twig', priority: 255 }
+                - { template: '@ibexadesign/field/relations.html.twig', priority: 255 }
+            content_view:
+                embed:
+                    category:
+                        template: "@ibexadesign/embed/category.html.twig"
+                        controller: App\Controller\CategoryController::embed
+                        match:
+                            Identifier\ContentType: ['category']
+                    poster:
+                        template: "@ibexadesign/embed/poster.html.twig"
+                        match:
+                            Identifier\ContentType: ['poster']
+                full:
+                    homepage:
+                        template: "@ibexadesign/full/home.html.twig"
+                        match:
+                            Id\Location: 2
+                    post:
+                        template: "@ibexadesign/full/post.html.twig"
+                        controller: App\Controller\PostController::withComments
+                        match:
+                            Identifier\ContentType: ['post']
             languages: [eng-GB]
 
     url_alias:

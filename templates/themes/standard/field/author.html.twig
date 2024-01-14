@@ -1,0 +1,17 @@
+{% block ezauthor_field %}
+    {% apply spaceless %}
+        {% if field.value.authors|length() > 0 %}
+            {% for author in field.value.authors %}
+                <a href="#" class="text-decoration-none">
+                    <img
+                            src="https://api.dicebear.com/7.x/pixel-art/svg?seed={{ author.email }}"
+                            class="rounded mr-2"
+                            width="30"
+                            height="30"
+                            alt="{{ author.name }}"
+                    > {{ author.name }}
+                </a>
+            {% endfor %}
+        {% endif %}
+    {% endapply %}
+{% endblock %}

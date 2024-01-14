@@ -1,0 +1,24 @@
+FileItem:
+    type: object
+    inherits:
+        - AbstractItem
+    config:
+        interfaces:
+            - Item
+            - Node
+        fields:
+            name:
+                type: String
+                resolve: '@=resolver("ItemFieldValue", [value, "name", args])'
+                args:
+                    language: { type: RepositoryLanguage }
+            description:
+                type: RichTextFieldValue
+                resolve: '@=resolver("ItemFieldValue", [value, "description", args])'
+                args:
+                    language: { type: RepositoryLanguage }
+            file:
+                type: BinaryFileFieldValue
+                resolve: '@=resolver("ItemFieldValue", [value, "file", args])'
+                args:
+                    language: { type: RepositoryLanguage }

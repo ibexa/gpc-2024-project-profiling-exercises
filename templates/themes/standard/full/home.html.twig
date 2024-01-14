@@ -1,0 +1,16 @@
+{% extends '@ibexadesign/pagelayout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col bg-light-subtle rounded-3 p-3">
+            {{ ibexa_render_field(content, 'short_description') }}
+            {{ ibexa_render_field(content, 'description') }}
+        </div>
+        <div class="col">
+            {{ render(controller("App\\Controller\\WeatherController::widget", { city: 'Mallorca' } )) }}
+        </div>
+    </div>
+    <div class="row my-3">
+        {{ render(controller("App\\Controller\\HomeController::posts", { location: location, page: app.request.query.get('page', 1) })) }}
+    </div>
+{% endblock %}

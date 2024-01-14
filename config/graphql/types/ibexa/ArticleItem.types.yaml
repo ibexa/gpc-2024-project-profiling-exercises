@@ -1,0 +1,42 @@
+ArticleItem:
+    type: object
+    inherits:
+        - AbstractItem
+    config:
+        interfaces:
+            - Item
+            - Node
+        fields:
+            title:
+                type: String
+                resolve: '@=resolver("ItemFieldValue", [value, "title", args])'
+                args:
+                    language: { type: RepositoryLanguage }
+            shortTitle:
+                type: String
+                resolve: '@=resolver("ItemFieldValue", [value, "short_title", args])'
+                args:
+                    language: { type: RepositoryLanguage }
+            author:
+                type: '[AuthorFieldValue]'
+                resolve: '@=resolver("ItemFieldValue", [value, "author", args]) !== null ? resolver("ItemFieldValue", [value, "author", args]).authors : null'
+                args:
+                    language: { type: RepositoryLanguage }
+            intro:
+                type: RichTextFieldValue
+                resolve: '@=resolver("ItemFieldValue", [value, "intro", args])'
+                args:
+                    language: { type: RepositoryLanguage }
+            body:
+                type: RichTextFieldValue
+                resolve: '@=resolver("ItemFieldValue", [value, "body", args])'
+                args:
+                    language: { type: RepositoryLanguage }
+            enableComments:
+                type: Boolean
+                resolve: '@=resolver("ItemFieldValue", [value, "enable_comments", args]) !== null ? resolver("ItemFieldValue", [value, "enable_comments", args]).bool : null'
+            image:
+                type: Item
+                resolve: '@=resolver("RelationFieldValue", [resolver("ItemFieldValue", [value, "image", args]), false])'
+                args:
+                    language: { type: RepositoryLanguage }

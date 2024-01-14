@@ -1,0 +1,9 @@
+FileItemConnection:
+    type: relay-connection
+    config:
+        nodeType: FileItem
+        connectionFields:
+            sliceSize:
+                type: Int!
+            orderBy:
+                type: String

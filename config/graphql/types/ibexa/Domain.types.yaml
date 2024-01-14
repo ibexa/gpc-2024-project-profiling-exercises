@@ -1,0 +1,21 @@
+Domain:
+    type: object
+    inherits:
+        - Platform
+    config:
+        fields:
+            content:
+                type: ItemGroupContent
+                resolve: '@=resolver("ContentTypeGroupByIdentifier", ["Content"])'
+            users:
+                type: ItemGroupUsers
+                resolve: '@=resolver("ContentTypeGroupByIdentifier", ["Users"])'
+            media:
+                type: ItemGroupMedia
+                resolve: '@=resolver("ContentTypeGroupByIdentifier", ["Media"])'
+            productCategoriesTaxonomy:
+                type: TaxonomyProduct_categories
+                resolve: '@=query("Taxonomy", "product_categories", args)'
+            tagsTaxonomy:
+                type: TaxonomyTags
+                resolve: '@=query("Taxonomy", "tags", args)'

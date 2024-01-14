@@ -1,0 +1,32 @@
+UserItem:
+    type: object
+    inherits:
+        - AbstractItem
+    config:
+        interfaces:
+            - Item
+            - Node
+        fields:
+            firstName:
+                type: String
+                resolve: '@=resolver("ItemFieldValue", [value, "first_name", args])'
+                args:
+                    language: { type: RepositoryLanguage }
+            lastName:
+                type: String
+                resolve: '@=resolver("ItemFieldValue", [value, "last_name", args])'
+                args:
+                    language: { type: RepositoryLanguage }
+            userAccount:
+                type: String
+                resolve: '@=resolver("ItemFieldValue", [value, "user_account", args]).id'
+            signature:
+                type: String
+                resolve: '@=resolver("ItemFieldValue", [value, "signature", args])'
+                args:
+                    language: { type: RepositoryLanguage }
+            image:
+                type: ImageFieldValue
+                resolve: '@=resolver("ItemFieldValue", [value, "image", args])'
+                args:
+                    language: { type: RepositoryLanguage }

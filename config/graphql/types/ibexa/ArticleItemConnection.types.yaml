@@ -1,0 +1,9 @@
+ArticleItemConnection:
+    type: relay-connection
+    config:
+        nodeType: ArticleItem
+        connectionFields:
+            sliceSize:
+                type: Int!
+            orderBy:
+                type: String

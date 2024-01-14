@@ -1,0 +1,16 @@
+load "authentication.bkf"
+
+scenario
+    name "Visit the main page as anonymous user"
+    visit url('/')
+        name "Open the main page"
+        expect status_code() == 200
+
+scenario
+    name "Visit the main page as Admin user"
+    include browserLogin
+    visit url('/')
+        name "Open the main page"
+        expect status_code() == 200
+
+        assert metrics.sql.queries.count < 10

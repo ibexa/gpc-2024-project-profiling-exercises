@@ -1,0 +1,33 @@
+tests:
+    "Loading Content Types should not call the database":
+        path:
+            - '/api/ibexa/v2/content/types'
+        assertions:
+            - "metrics.sql.queries.count == 0"
+            - "main.peak_memory < 50mb"
+        description: Content Types information should be loaded from cache
+    "Homepage should make only one database calls":
+        path: 
+            - '/'
+        assertions:
+            - metrics.sql.queries.count == 1
+        description: The whole homepage should be cached. This assertion will fail on purpose.
+    "Example production tests":
+        path: 
+            - '/.*'
+        assertions:
+            - metrics.emails.sent.count == 0 
+            - metrics.symfony.yaml.reads.count == 0
+        description: | 
+            Production should not send emails when handling a request.
+            Symfony configuration should not be loaded from YAML in production.
+
+scenarios: |
+    #!blackfire-player
+
+    name "Mallorca BB scenarios"
+
+    set username "admin"
+    set password "publish"
+
+    load "tests/performance/scenarios.bkf"

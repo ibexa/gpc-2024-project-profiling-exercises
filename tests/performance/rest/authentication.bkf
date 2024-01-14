@@ -1,0 +1,36 @@
+group restLogin
+    name "Setup: REST Login"
+    visit url('/api/ibexa/v2/user/sessions')
+        name "Create session for user"
+        blackfire false
+        method 'POST'
+        header "Accept: application/vnd.ibexa.api.Session+json"
+        header "Content-Type: application/vnd.ibexa.api.SessionInput+json"
+        body
+        """i
+        {
+            "SessionInput": {
+                "login": "${username}",
+                "password": "${password}"
+            }
+        }
+        """
+
+        expect status_code() == 201
+
+        set sessionName json("Session.name")
+        set sessionIdentifier json("Session.identifier")
+        set cookieHeader "Cookie: " ~ sessionName ~ "=" ~ sessionIdentifier
+        set csrfToken json("Session.csrfToken")
+        set logoutUrl "/api/ibexa/v2/user/sessions/" ~ sessionIdentifier
+
+group restLogout
+    name "Tear down: REST logout"
+    visit url(logoutUrl)
+        name "Destroy session"
+        blackfire false
+        method 'DELETE'
+        header "X-Siteaccess: site"
+        header cookieHeader
+        header "X-CSRF-token: " ~ csrfToken
+        expect status_code() == 204

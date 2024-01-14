@@ -1,0 +1,30 @@
+TagItem:
+    type: object
+    inherits:
+        - AbstractItem
+    config:
+        interfaces:
+            - Item
+            - Node
+        fields:
+            name:
+                type: String
+                resolve: '@=resolver("ItemFieldValue", [value, "name", args])'
+                args:
+                    language: { type: RepositoryLanguage }
+            identifier:
+                type: String
+                resolve: '@=resolver("ItemFieldValue", [value, "identifier", args])'
+            parent:
+                type: String
+                resolve: '@=resolver("ItemFieldValue", [value, "parent", args])'
+            description:
+                type: String
+                resolve: '@=resolver("ItemFieldValue", [value, "description", args])'
+                args:
+                    language: { type: RepositoryLanguage }
+            image:
+                type: ImageFieldValue
+                resolve: '@=resolver("ItemFieldValue", [value, "image", args])'
+                args:
+                    language: { type: RepositoryLanguage }

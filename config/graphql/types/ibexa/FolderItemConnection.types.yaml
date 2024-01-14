@@ -1,0 +1,9 @@
+FolderItemConnection:
+    type: relay-connection
+    config:
+        nodeType: FolderItem
+        connectionFields:
+            sliceSize:
+                type: Int!
+            orderBy:
+                type: String

@@ -1,0 +1,10 @@
+ItemGroupMediaTypes:
+    type: object
+    config:
+        fields:
+            file:
+                type: FileItemType
+                resolve: '@=resolver("ContentType", [{"identifier": "file"}])'
+            image:
+                type: ImageItemType
+                resolve: '@=resolver("ContentType", [{"identifier": "image"}])'

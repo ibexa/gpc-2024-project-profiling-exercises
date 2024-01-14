@@ -1,0 +1,24 @@
+ImageItem:
+    type: object
+    inherits:
+        - AbstractItem
+    config:
+        interfaces:
+            - Item
+            - Node
+        fields:
+            name:
+                type: String
+                resolve: '@=resolver("ItemFieldValue", [value, "name", args])'
+                args:
+                    language: { type: RepositoryLanguage }
+            caption:
+                type: RichTextFieldValue
+                resolve: '@=resolver("ItemFieldValue", [value, "caption", args])'
+                args:
+                    language: { type: RepositoryLanguage }
+            image:
+                type: ImageFieldValue
+                resolve: '@=resolver("ItemFieldValue", [value, "image", args])'
+                args:
+                    language: { type: RepositoryLanguage }

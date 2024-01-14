@@ -1,0 +1,25 @@
+{% extends '@ibexadesign/pagelayout.html.twig' %}
+
+{% block content %}
+    <div class="row rounded-3 p-3" style="background-color:#fff;">
+        <h1 class="border-bottom">{{ ibexa_render_field(content, 'title') }}</h1>
+        {{ ibexa_render_field(content, 'message') }}
+        <p>{{ ibexa_render_field(content, 'author') }}</p>
+        <p>{{ content.versionInfo.creationDate|date('Y-m-d H:i') }}</p>
+    </div>
+    <div class="row rounded-3 p-3 mt-3" style="background-color:#fff;">
+        <h2>Comments</h2>
+        <div>
+        {% for commentSearchHit in comments %}
+            {% set comment = commentSearchHit.valueObject.content %}
+            <p class="border-bottom">{{ comment.versionInfo.creationDate|date('Y-m-d H:i') }}</p>
+            {{ ibexa_render_field(comment, 'message') }}
+            <p>{{ ibexa_render_field(comment, 'author') }}</p>
+        {% else %}
+            <p>
+                No comments for this post
+            </p>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

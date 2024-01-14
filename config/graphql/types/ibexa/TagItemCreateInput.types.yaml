@@ -1,0 +1,14 @@
+TagItemCreateInput:
+    type: input-object
+    config:
+        fields:
+            name:
+                type: String!
+            identifier:
+                type: String!
+            parent:
+                type: String
+            description:
+                type: String
+            image:
+                type: ImageFieldInput

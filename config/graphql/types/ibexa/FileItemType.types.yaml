@@ -1,0 +1,17 @@
+FileItemType:
+    type: object
+    inherits:
+        - BaseItemType
+    config:
+        interfaces:
+            - ItemType
+        fields:
+            name:
+                type: TextLineFieldDefinition
+                resolve: '@=value.getFieldDefinition("name")'
+            description:
+                type: MatrixFieldDefinition
+                resolve: '@=value.getFieldDefinition("description")'
+            file:
+                type: BinaryFieldDefinition
+                resolve: '@=value.getFieldDefinition("file")'

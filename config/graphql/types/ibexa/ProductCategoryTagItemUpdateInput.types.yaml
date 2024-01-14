@@ -1,0 +1,14 @@
+ProductCategoryTagItemUpdateInput:
+    type: input-object
+    config:
+        fields:
+            name:
+                type: String
+            identifier:
+                type: String
+            parent:
+                type: String
+            description:
+                type: RichTextFieldInput
+            image:
+                type: String

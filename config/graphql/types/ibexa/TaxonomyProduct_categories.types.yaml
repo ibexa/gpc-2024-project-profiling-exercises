@@ -1,0 +1,19 @@
+TaxonomyProduct_categories:
+    type: object
+    inherits:
+        - BaseTaxonomy
+    config:
+        fields:
+            single:
+                type: TaxonomyEntry
+                description: 'Fetch single Taxonomy Entry using ID, identifier or contentId'
+                resolve: '@=query("TaxonomyEntry", args, "product_categories")'
+                args:
+                    id: { type: Int }
+                    identifier: { type: String }
+                    contentId: { type: Int }
+            all:
+                type: TaxonomyEntryConnection
+                description: 'Fetch multiple Taxonomy Entries'
+                resolve: '@=query("TaxonomyEntryAll", args, "product_categories")'
+                argsBuilder: 'Relay::Connection'

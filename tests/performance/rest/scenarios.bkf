@@ -1,0 +1,26 @@
+load "authentication.bkf"
+
+scenario
+    name "Verify current user"
+    include restLogin
+    visit url('/api/ibexa/v2/user/current')
+        name "Query current user endpoint"
+        header "Accept: application/vnd.ibexa.api.User+json"
+        header "X-Siteaccess: site"
+        header cookieHeader
+    follow
+        name "Follow redirect"
+        expect status_code() == 200
+        expect json('User.name') == "Administrator User"
+    include restLogout
+
+scenario
+    name "Load Content Types"
+    include restLogin
+    visit url('/api/ibexa/v2/content/types')
+        name "Load Content Types"
+        header "Accept: application/vnd.ibexa.api.ContentTypeList+json"
+        header "X-Siteaccess: site"
+        header cookieHeader
+
+        expect status_code() == 200

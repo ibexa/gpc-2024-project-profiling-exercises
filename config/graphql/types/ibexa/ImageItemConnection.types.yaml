@@ -1,0 +1,9 @@
+ImageItemConnection:
+    type: relay-connection
+    config:
+        nodeType: ImageItem
+        connectionFields:
+            sliceSize:
+                type: Int!
+            orderBy:
+                type: String

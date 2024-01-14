@@ -1,0 +1,2 @@
+load "rest/scenarios.bkf"
+load "browser/scenarios.bkf"

@@ -1,0 +1,20 @@
+FolderItemType:
+    type: object
+    inherits:
+        - BaseItemType
+    config:
+        interfaces:
+            - ItemType
+        fields:
+            name:
+                type: TextLineFieldDefinition
+                resolve: '@=value.getFieldDefinition("name")'
+            shortName:
+                type: TextLineFieldDefinition
+                resolve: '@=value.getFieldDefinition("short_name")'
+            shortDescription:
+                type: MatrixFieldDefinition
+                resolve: '@=value.getFieldDefinition("short_description")'
+            description:
+                type: MatrixFieldDefinition
+                resolve: '@=value.getFieldDefinition("description")'

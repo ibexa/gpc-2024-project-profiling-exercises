@@ -1,0 +1,45 @@
+ItemGroupUsers:
+    type: object
+    inherits:
+        - DomainContentTypeGroup
+    config:
+        fields:
+            _types:
+                type: ItemGroupUsersTypes
+                resolve: {  }
+            users:
+                type: UserItemConnection
+                description: 'No description available'
+                resolve: '@=resolver("ItemsOfTypeAsConnection", ["user", args])'
+                argsBuilder: 'Relay::Connection'
+                args:
+                    query: { type: ContentSearchQuery, description: 'A Content query used to filter results' }
+                    sortBy: { type: '[SortByOptions]', description: 'A Sort Clause, or array of Clauses. Add _desc after a Clause to reverse it' }
+            user:
+                type: UserItem
+                description: 'No description available'
+                resolve: '@=resolver("ItemOfType", [args, "user"])'
+                args:
+                    contentId: { type: Int, description: 'Content ID of the user' }
+                    remoteId: { type: String, description: 'Content remote ID of the user' }
+                    locationId: { type: Int, description: 'Location ID of the user' }
+                    locationRemoteId: { type: String, description: 'Location remote ID of the user' }
+                    urlAlias: { type: String, description: 'URL alias of the user' }
+            userGroups:
+                type: UserGroupItemConnection
+                description: 'No description available'
+                resolve: '@=resolver("ItemsOfTypeAsConnection", ["user_group", args])'
+                argsBuilder: 'Relay::Connection'
+                args:
+                    query: { type: ContentSearchQuery, description: 'A Content query used to filter results' }
+                    sortBy: { type: '[SortByOptions]', description: 'A Sort Clause, or array of Clauses. Add _desc after a Clause to reverse it' }
+            userGroup:
+                type: UserGroupItem
+                description: 'No description available'
+                resolve: '@=resolver("ItemOfType", [args, "user_group"])'
+                args:
+                    contentId: { type: Int, description: 'Content ID of the user_group' }
+                    remoteId: { type: String, description: 'Content remote ID of the user_group' }
+                    locationId: { type: Int, description: 'Location ID of the user_group' }
+                    locationRemoteId: { type: String, description: 'Location remote ID of the user_group' }
+                    urlAlias: { type: String, description: 'URL alias of the user_group' }

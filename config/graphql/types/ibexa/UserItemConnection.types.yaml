@@ -1,0 +1,9 @@
+UserItemConnection:
+    type: relay-connection
+    config:
+        nodeType: UserItem
+        connectionFields:
+            sliceSize:
+                type: Int!
+            orderBy:
+                type: String

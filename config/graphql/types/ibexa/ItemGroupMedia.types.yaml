@@ -1,0 +1,45 @@
+ItemGroupMedia:
+    type: object
+    inherits:
+        - DomainContentTypeGroup
+    config:
+        fields:
+            _types:
+                type: ItemGroupMediaTypes
+                resolve: {  }
+            files:
+                type: FileItemConnection
+                description: 'No description available'
+                resolve: '@=resolver("ItemsOfTypeAsConnection", ["file", args])'
+                argsBuilder: 'Relay::Connection'
+                args:
+                    query: { type: ContentSearchQuery, description: 'A Content query used to filter results' }
+                    sortBy: { type: '[SortByOptions]', description: 'A Sort Clause, or array of Clauses. Add _desc after a Clause to reverse it' }
+            file:
+                type: FileItem
+                description: 'No description available'
+                resolve: '@=resolver("ItemOfType", [args, "file"])'
+                args:
+                    contentId: { type: Int, description: 'Content ID of the file' }
+                    remoteId: { type: String, description: 'Content remote ID of the file' }
+                    locationId: { type: Int, description: 'Location ID of the file' }
+                    locationRemoteId: { type: String, description: 'Location remote ID of the file' }
+                    urlAlias: { type: String, description: 'URL alias of the file' }
+            images:
+                type: ImageItemConnection
+                description: 'No description available'
+                resolve: '@=resolver("ItemsOfTypeAsConnection", ["image", args])'
+                argsBuilder: 'Relay::Connection'
+                args:
+                    query: { type: ContentSearchQuery, description: 'A Content query used to filter results' }
+                    sortBy: { type: '[SortByOptions]', description: 'A Sort Clause, or array of Clauses. Add _desc after a Clause to reverse it' }
+            image:
+                type: ImageItem
+                description: 'No description available'
+                resolve: '@=resolver("ItemOfType", [args, "image"])'
+                args:
+                    contentId: { type: Int, description: 'Content ID of the image' }
+                    remoteId: { type: String, description: 'Content remote ID of the image' }
+                    locationId: { type: Int, description: 'Location ID of the image' }
+                    locationRemoteId: { type: String, description: 'Location remote ID of the image' }
+                    urlAlias: { type: String, description: 'URL alias of the image' }

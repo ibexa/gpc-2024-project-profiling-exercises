@@ -1,0 +1,16 @@
+ItemGroupContentTypes:
+    type: object
+    config:
+        fields:
+            article:
+                type: ArticleItemType
+                resolve: '@=resolver("ContentType", [{"identifier": "article"}])'
+            folder:
+                type: FolderItemType
+                resolve: '@=resolver("ContentType", [{"identifier": "folder"}])'
+            tag:
+                type: TagItemType
+                resolve: '@=resolver("ContentType", [{"identifier": "tag"}])'
+            productCategoryTag:
+                type: ProductCategoryTagItemType
+                resolve: '@=resolver("ContentType", [{"identifier": "product_category_tag"}])'

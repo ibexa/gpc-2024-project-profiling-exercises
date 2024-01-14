@@ -1,0 +1,15 @@
+<div class="bg-light-subtle rounded-3 p-3" style="width: fit-content;">
+    <p>Weather in {{ weather.city }}</p>
+    <span class="display-5">
+        {{ weather.temperature }} {% if weather.unit == 'celsius' %}C{% else %}F{% endif %}
+        {% set condition = 'question-circle' %}
+        {% if weather.condition == 'sunny' %}
+            {% set condition = 'sun text-warning' %}
+        {% elseif weather.condition == 'cloudy' %}
+            {% set condition = 'clouds text-secondary' %}
+        {% elseif weather.condition == 'rainy' %}
+            {% set condition = 'cloud-rain text-primary' %}
+        {% endif %}
+        <i class="bi bi-{{ condition }}"></i>
+    </span>
+</div>

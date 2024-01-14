@@ -1,0 +1,30 @@
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Post</th>
+            <th scope="col">Category</th>
+            <th scope="col">Author</th>
+            <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{ pagerfanta(pager, 'twitter_bootstrap5', { routeName: 'ibexa.url.alias', routeParams: {location: location} }) }}
+    {% for post in pager %}
+        <tr>
+            <td>
+                <a href="{{ ibexa_path(post.valueObject) }}" class="text-decoration-none">{{ ibexa_render_field(post.valueObject.content, 'title') }}</a>
+            </td>
+            <td>
+                {{ ibexa_render_field(post.valueObject.content, 'categories') }}
+            </td>
+            <td>
+                {{ ibexa_render_field(post.valueObject.content, 'author') }}
+            </td>
+            <td>
+                {{ post.valueObject.content.versionInfo.creationDate|date('H:i, Y-m-d') }}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{{ pagerfanta(pager, 'twitter_bootstrap5', { routeName: 'ibexa.url.alias', routeParams: {location: location} }) }}
