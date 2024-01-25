@@ -1,8 +1,8 @@
 This project aims to provide you with a sandbox for exercising your profiling skills in Ibexa DXP-based projects.
 There are multiple performance issues with the project's code - use your profiling skills to find them all (and then: fix them ;) )
-Contributors: Mateusz Bieniek and Marek Nocuń
+Contributors: Mateusz Bieniek and Marek Nocoń
 
-Feel free to drop us a message with feedback: mateusz.bieniek@ibexa.co and marek.nocun@ibexa.co
+Feel free to drop us a message with feedback: mateusz.bieniek@ibexa.co and marek.nocon@ibexa.co
 
 ## Requirements
 - Standard Ibexa DXP v4.5 requirements: https://doc.ibexa.co/en/4.5/getting_started/requirements/
@@ -14,9 +14,12 @@ Feel free to drop us a message with feedback: mateusz.bieniek@ibexa.co and marek
 2. Create a database and restore the database dump from `doc/sql/igpc_profiling.sql` with base data like directories, roles, etc
 3. Set up `.env.local` with DB connection details
 4. `composer install`
-5. `composer run post-install-cmd`
-6. `php -S 127.0.0.1:8000 -t public`
-7. Enjoy!
+5. `composer run post-install-cmd
+6. Generate poster users with: `php bin/console app:generate-posters 100`
+7. Generate categories with: `php bin/console app:generate-categories 10`
+8. Generate posts with: `php bin/console app:generate-posts 200`
+9. `php -S 127.0.0.1:8000 -t public`
+10. Enjoy!
 
 ## Testing
 
